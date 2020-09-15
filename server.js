@@ -85,7 +85,7 @@ app.use('/users', require('./routes/users'));
 app.use('/cart', require('./routes/products'));
 //app.use('/cart', require('./routes/cart'));
 //Set Port
-app.set('port', 3300);
+app.set('port', 3200);
 
 mongoose.connection.on('error', function (err) {
 	console.log('Mongodb is not running.');
