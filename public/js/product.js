@@ -12,15 +12,20 @@ $(document).ready(function () {
     });
     function addingProduct(id, count) {
         console.log('inside', id);
+        //var totalQty;
         $.ajax({
             type: 'post',
             url: '/home/add-to-cart/' + id,
-            'Content-Type': 'application/json',
+            data: { "productId": id },
             success: function (response) {
                 if (response) {
 
                     //$("#count").append(response);
                     console.log("success", response);
+                    //totalQty = response.totalQty;
+                    //console.log("totalQty----", totalQty);
+                    $("#count").append(response.totalQty);
+
                     $.notify({
                         // Options
                         icon: 'fa fa-check-circle',
@@ -40,7 +45,7 @@ $(document).ready(function () {
                             }
                         }
                     );
-
+                    $("#count").remove();
                 }
             },
             error: function (error) {

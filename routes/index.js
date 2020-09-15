@@ -34,9 +34,9 @@ router.get('/index', ensureAuthenticated, function (req, res, next) {
 
 
 router.post("/add-to-cart/:id", function (req, res, next) {
-    let count = 0;
-    console.log(count);
-    var productId = req.params.id;
+    console.log("dtaa", req.body.productId);
+    var productId = req.body.productId;
+    // var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {})
     req.session.cart = cart;
 
@@ -45,17 +45,17 @@ router.post("/add-to-cart/:id", function (req, res, next) {
             return res.redirect("/home/index")
         }
         cart.add(product, product.id);
-        count++;
+
         req.session.cart = cart;
-        let value = { cart: cart };
-        //res.json(value);
+        let value = cart;
+        //res.end(JSON.stringify(value));
         // res.render('user_list', {user_data: value});
         res.writeHead(200, { 'Content-Type': 'application/json' });
         console.log("dtat", JSON.stringify(value));
         res.end(JSON.stringify(value));
-        console.log(count);
-        req.flash('success_msg', 'Product Added Successfully');
-        res.redirect("/home/index");
+        // console.log(count);
+        //req.flash('success_msg', 'Product Added Successfully');
+        //res.redirect("/home/index");
     });
 });
 

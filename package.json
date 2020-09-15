@@ -1,0 +1,25 @@
+{
+	"version": "1.0.0",
+	"author": "MURAGESH",
+	"dependencies": {
+		"@handlebars/allow-prototype-access": "^1.0.3",
+		"bcryptjs": "*",
+		"body-parser": "*",
+		"connect-flash": "*",
+		"connect-mongo": "^3.2.0",
+		"cookie-parser": "*",
+		"dotenv": "^8.2.0",
+		"express": "*",
+		"express-handlebars": "*",
+		"express-messages": "*",
+		"express-session": "*",
+		"express-validator": "5.1",
+		"mongodb": "*",
+		"mongojs": "*",
+		"mongoose": "*",
+		"nodemailer": "^6.4.11",
+		"passport": "*",
+		"passport-http": "*",
+		"passport-local": "*"
+	}
+}
