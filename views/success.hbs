@@ -1,0 +1,56 @@
+<main>
+    <div class="container container_style">
+        <div class="col-md-6">
+            {{#if success_msg}}
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <strong>{{success_msg}}</strong>
+            </div>
+            {{/if}}
+        </div>
+        <br>
+        <h2>User: {{ user.name }}</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product designation</th>
+                        <th>Unit price</th>
+                        <th>Quantity</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{# each products }}
+
+                    <tr>
+
+                        <td>{{ this.item.title }}</td>
+                        <td>{{ this.item.price }}</td>
+                        <td>{{this.qty}}</td>
+
+
+
+
+                    </tr>
+
+                    {{/each}}
+                </tbody>
+            </table>
+            <h2 class="text-right">Total Price:{{totalPrice}}</h2>
+
+
+        </div>
+        <p>
+        <h2>Your order is confirmed.Thank you for shopping with us.</h2><br><a href="/home/index">Click
+            here</a> to
+        purchase any other item.
+        </p>
+
+
+
+    </div>
+</main>

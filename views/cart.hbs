@@ -1,0 +1,61 @@
+{{# if products }}
+<div class="container" style="padding-top:20px;">
+
+    <!--cart shopping-->
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title"> <i class="fa fa-shopping-basket" aria-hidden="true"></i>Shopping DMART </h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product designation</th>
+                            <th>Unit price</th>
+                            <th>Quantity</th>
+                            <th>Total price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{# each products }}
+
+                        <tr>
+
+                            <td>{{ this.item.title }}</td>
+                            <td>{{ this.item.price }}</td>
+                            <td class="qte"><span class="quantite">{{this.qty}}&nbsp;</span>
+                                <a href="/home/add-cart/{{this.item._id}}"
+                                    class="btn btn-info btn-sm plusmoin btn-raised"><em class="fa fa-plus"></em></a>
+                                <a href="/home/reduce/{{this.item._id}}"
+                                    class="btn btn-warning btn-sm plusmoin btn-raised"><em class="fa fa-minus"></em></a>
+                            </td>
+                            <td>{{this.price}}</td>
+                            <td><a href="/home/remove/{{this.item._id}}" id="remove_cart" class="remove_cart"><i
+                                        class="fa fa-times"></i></a></td>
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-right">
+                <button class="btn btn-default disabled" type="button">
+                    Total <span id="price" class="badge">{{ totalPrice }}</span>
+                </button>
+                <a href="/cart/shipping" type="button" class="btn btn-success">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{ else }}
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+        <h2>No Items to Display</h2>
+    </div>
+</div>
+{{/if}}
