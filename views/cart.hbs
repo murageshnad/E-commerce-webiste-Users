@@ -25,9 +25,10 @@
 
                             <td>{{ this.item.title }}</td>
                             <td>{{ this.item.price }}</td>
-                            <td class="qte"><span class="quantite">{{this.qty}}&nbsp;</span>
+                            <td class="qte"><span id="pluss" class="quantite">{{this.qty}}&nbsp;</span>
                                 <a href="/home/add-cart/{{this.item._id}}"
-                                    class="btn btn-info btn-sm plusmoin btn-raised"><em class="fa fa-plus"></em></a>
+                                    class="btn btn-info btn-sm plusmoin btn-raised" data-type="{{this.item._id}}"><em
+                                        class="fa fa-plus"></em></a>
                                 <a href="/home/reduce/{{this.item._id}}"
                                     class="btn btn-warning btn-sm plusmoin btn-raised"><em class="fa fa-minus"></em></a>
                             </td>

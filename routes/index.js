@@ -51,7 +51,7 @@ router.post("/add-to-cart/:id", function (req, res, next) {
         //res.end(JSON.stringify(value));
         // res.render('user_list', {user_data: value});
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        console.log("dtat", JSON.stringify(value));
+        //console.log("dtat", JSON.stringify(value));
         res.end(JSON.stringify(value));
         // console.log(count);
         //req.flash('success_msg', 'Product Added Successfully');
@@ -61,6 +61,7 @@ router.post("/add-to-cart/:id", function (req, res, next) {
 
 
 router.get("/add-cart/:id", function (req, res, next) {
+
     var productId = req.params.id
     var cart = new Cart(req.session.cart ? req.session.cart : {})
 
@@ -71,8 +72,8 @@ router.get("/add-cart/:id", function (req, res, next) {
         cart.add(product, product.id);
         req.session.cart = cart;
         res.redirect("/home/cart");
-    })
-})
+    });
+});
 
 
 

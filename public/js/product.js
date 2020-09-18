@@ -21,10 +21,10 @@ $(document).ready(function () {
                 if (response) {
 
                     //$("#count").append(response);
-                    console.log("success", response);
+                    //console.log("success", response.items.length);
                     //totalQty = response.totalQty;
-                    //console.log("totalQty----", totalQty);
-                    $("#count").append(response.totalQty);
+                    // console.log("totalQty----", response.totalQty);
+                    $("#qty").html(response.totalQty);
 
                     $.notify({
                         // Options
@@ -46,6 +46,51 @@ $(document).ready(function () {
                         }
                     );
                     $("#count").remove();
+                }
+            },
+            error: function (error) {
+                console.log('something went wrong !!...');
+                console.log('error = ', error);
+            },
+
+        });
+    }
+
+
+
+    $('.adding').on('click', function (responseTxt, statusTxt, xhr) {
+        event.preventDefault();
+        console.log('clicked');
+        let id = $(this).attr('data-type');
+        console.log("type", id);
+        IncreaseProduct(id);
+
+    });
+    function IncreaseProduct(id) {
+        console.log('inside', id);
+        var productId = id;
+        let obj = {};
+        $.ajax({
+            type: 'post',
+            url: '/home/add-cart/' + id,
+            data: { "productId": id },
+            success: function (response) {
+                if (response) {
+
+                    //$("#count").append(response);
+                    //console.log("success", response);
+                    // console.log("length", typeof response.items);
+                    $.each(response.items, function (key, val) {
+                        if (key == productId) {
+                            console.log(val.qty);
+                            obj.qty = val.qty;
+                        }
+                        //console.log('key', productId);
+
+                    });
+                    $("#plus").html(obj.qty);
+                    console.log('qty:', obj.qty);
+
                 }
             },
             error: function (error) {
